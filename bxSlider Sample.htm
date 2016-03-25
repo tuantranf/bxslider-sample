@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)http://www.webdesignleaves.com/samples/jQuery/slider/bxSlider_01.html -->
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>bxSlider Sample</title>
+      <link rel="stylesheet" href="./bxSlider Sample_files/jquery.bxslider.css">
+      <style>
+         * {
+         margin: 0;
+         padding: 0;
+         }
+         #wrapper {
+         position: relative;
+         max-width: 680px;
+         margin: 0 auto;
+         }
+         h1 {
+         font-size: 30px;
+         color: #777;
+         padding: 10px;
+         }
+         h2 {
+         font-size: 24px;
+         color: #999;
+         padding: 20px;
+         margin: 100px 0 50px;
+         }
+         ul {
+         list-style-type: none;
+         }
+         .space {
+         height: 300px;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="wrapper">
+         <h2 id="sample5">Sample 5</h2>
+         <div class="bx-wrapper" style="max-width: 100%;">
+            <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 384px;">
+               <div id="slider5" style="width: auto; position: relative; transition-timing-function: ease-in-out; transition-duration: 0.5s; transform: translate3d(0px, -1536px, 0px);">
+                  <div style="float: none; list-style: none; position: relative; width: 680px;" class="bx-clone">
+                        <img src="./bxSlider Sample_files/P1020038.jpg" alt="">
+                  </div>
+                  <div style="float: none; list-style: none; position: relative; width: 680px;">
+                        <img src="./bxSlider Sample_files/P1010411.jpg" alt="">
+                  </div>
+                  <div style="float: none; list-style: none; position: relative; width: 680px;">
+                        <img src="./bxSlider Sample_files/P1010446.jpg" alt="">
+                  </div>
+                  <div style="float: none; list-style: none; position: relative; width: 680px;">
+                        <img src="./bxSlider Sample_files/P1010518.jpg" alt="">
+                  </div>
+                  <div style="float: none; list-style: none; position: relative; width: 680px;">
+                        <img src="./bxSlider Sample_files/P1010676.jpg" alt="">
+                  </div>
+                  <div style="float: none; list-style: none; position: relative; width: 680px;">
+                        <img src="./bxSlider Sample_files/P1020018.jpg" alt="">
+                  </div>
+                  <div style="float: none; list-style: none; position: relative; width: 680px;">
+                        <img src="./bxSlider Sample_files/P1020038.jpg" alt="">
+                  </div>
+                  <div style="float: none; list-style: none; position: relative; width: 680px;" class="bx-clone">
+                        <img src="./bxSlider Sample_files/P1010411.jpg" alt="">
+                  </div>
+                  <div style="float: none; list-style: none; position: relative; width: 680px;">
+                        <video autoplay loop muted controls="false" id="video1">
+                              <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        </video>
+                  </div>
+                  <div style="float: none; list-style: none; position: relative; width: 680px;">
+                        <video autoplay loop muted controls="false" id="video1">
+                              <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        </video>
+                  </div>
+               </div>
+            </div>
+            <div class="bx-controls bx-has-pager bx-has-controls-direction">
+                  <div class="bx-pager bx-default-pager">
+                        <div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link active">1</a></div>
+                        <div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div>
+                        <div class="bx-pager-item"><a href="" data-slide-index="2" class="bx-pager-link">3</a></div>
+                        <div class="bx-pager-item"><a href="" data-slide-index="3" class="bx-pager-link">4</a></div>
+                        <div class="bx-pager-item"><a href="" data-slide-index="4" class="bx-pager-link">5</a></div>
+                        <div class="bx-pager-item"><a href="" data-slide-index="5" class="bx-pager-link">6</a></div>
+                        <div class="bx-pager-item"><a href="" data-slide-index="6" class="bx-pager-link">7</a></div>
+                        <div class="bx-pager-item"><a href="" data-slide-index="7" class="bx-pager-link">8</a></div>
+                  </div>
+            </div>
+         </div>
+         <!--end of #slider-->
+         <div class="space"></div>
+      </div>
+      <!-- end of #wrapper -->
+      <script src="./bxSlider Sample_files/jquery-1.10.1.min.js"></script>
+      <script src="./bxSlider Sample_files/jquery-ui.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+      <script src="./bxSlider Sample_files/jquery.bxslider.min.js"></script>
+      <!--[if lt IE 9]>
+      <script src="../../js/respond.min.js"></script>
+      <![endif]-->
+      <script>
+            jQuery(function($){
+                  var rand = Math.floor( Math.random() * 3 );
+                  var modes = ['vertical', 'horizontal', 'fade'];
+                  var bx_mode = modes[rand];
+
+                  var slider = $('#slider5').bxSlider({
+                        auto:true,
+                        speed:500,
+                        pause:3500,
+                        mode: bx_mode,
+                        easing:'ease-in-out',
+                        video: true,
+                        onSlideAfter: function ($slideElement) {
+                              slider.startAuto();
+                              console.log($slideElement)
+
+                        }
+                  });
+             });
+      </script>
+   </body>
+</html>
