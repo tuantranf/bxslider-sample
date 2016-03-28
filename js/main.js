@@ -6,16 +6,18 @@ $(function() {
   var videos = JSON.parse(__videos);
   _.each(_.sampleSize(videos, config.video_num), function(val) {
     items.push('<div class="slide-item video">\
+                  <div class="row">\
                     <video autoplay muted controls="false" preload="auto" id="video1">\
                        <source src="./files/videos/' + val + '" type="video/mp4">\
                     </video>\
+                  </div>\
                 </div>');
   });
 
   var banners = JSON.parse(__banners);
   _.each(_.sampleSize(banners, config.banner_num), function(val) {
       items.push('<div class="slide-item banner">\
-                    <div>\
+                    <div class="row">\
                       <img src="./files/banners/' + val + '" />\
                     </div>\
                   </div>');
@@ -26,23 +28,30 @@ $(function() {
   var members = JSON.parse(__members);
   _.each(mvp.members, function(val, key) {
       items.push('<div class="slide-item member">\
-                    <img align="left" class="member-banner" src="./files/members/' + mvp.latest + '/' + val.banner + '" align="middle" />\
-                    <img align="left" class="member-profile thumbnail" src="./files/members/profiles/' + key + '.png" align="middle" />\
-                    <div class="hero">\
-                      <hgroup>\
+                    <div class="row">\
+                      <div class="col-md-2">\
+                        <img class="member-profile thumbnail" src="./files/members/profiles/' + key + '.png" />\
+                      </div>\
+                      <div class="col-md-10">\
                         <h1>' + members[key].name + '</h1>\
+                      </div>\
+                    </div>\
+                    <div class="row">\
+                      <div class="col-md-10">\
+                        <img class="member-banner" src="./files/members/' + mvp.latest + '/' + val.banner + '" />\
+                      </div>\
+                      <div class="col-md-2">\
                         <h2>CTR: ' + val.CTR + '% </h2>\
                         <h2>CVR: ' + val.CVR + '% </h2>\
-                      </hgroup>\
+                      </div>\
                     </div>\
                   </div>');
   });
 
-  $("#end").before($(items.join("")));
-  //$("#start").after($(items.join("")));
+  $("#start").after($(items.join("")));
 
   var MODE = 'horizontal';
-  var EASINGS = ['linear','swing','easeInCubic','easeInQuart','easeInQuint','easeInExpo','easeInSine','easeInCirc','easeInElastic','easeInBack','easeInBounce'];
+  var EASINGS = ['linear','swing','easeInCubic','easeInQuart','easeInQuint','easeInSine','easeInCirc','easeInElastic','easeInBack','easeInBounce'];
   var OPTS = {
     video: {
       speed: 1500,
@@ -61,10 +70,16 @@ $(function() {
   var opt_name = 'video'; // only work with it
   var slider = $('#slider').bxSlider();
   updateSlider(0, opt_name);
+  var count = slider.getSlideCount();
 
   function onSlideAfterHandler(curSlide) {
     // reload page when slide end
-    if (curSlide[0].id == "end") location.reload(true);
+    if (slider.getCurrentSlide() == (count - 1)) {
+      setTimeout(function() {
+        console.log("end - reload page");
+        location.reload(true);
+      }, OPTS[opt_name].pause);
+    }
 
     // video
     if (curSlide.hasClass("video")) { // never come here
@@ -77,7 +92,7 @@ $(function() {
 
       // can not play video in onSlideAfterHandler
       slider.stopAuto();
-      curSlide.children('video')[0].play();
+      curSlide.find('video')[0].play();
     }
 
     // banner
