@@ -1,0 +1,75 @@
+/**
+ *　設定
+ *	"video_num": 2, // 表示する動画数
+ *	"banner_num": 2, // 表示するバナー数
+ *	"banner_duration_sec": 7, // バナー表示秒数
+ *	"member_duration_sec": 10, // メンバー表示秒数
+ */
+__config = `{
+	"video_num": 2,
+	"banner_num": 2,
+	"banner_duration_sec": 7,
+	"member_duration_sec": 10
+}`;
+
+/**
+ *　バナーファイル名リスト
+ * files/banners
+ */
+__banners = `[
+	"hill_fence.jpg",
+	"houses.jpg",
+	"me_trees.jpg",
+	"tree_root.jpg",
+	"trees.jpg"
+]`;
+
+/**
+ *　動画ファイル名リスト
+ *　files/videos
+ *
+ */
+__videos = `[
+	"mov_bbb.mp4",
+	"mov_bbb.mp4",
+	"mov_bbb.mp4"
+]`;
+
+/**
+ *　メンバー情報リスト
+ *
+ */
+__members = `{
+	"DT0222": {
+		"name": "First Middle Last"
+	},
+	"DT0220": {
+		"name": "First Middle Last2"
+	},
+	"DT0221": {
+		"name": "First Middle Last3"
+	}
+}`;
+
+
+/**
+ *　MVP情報リスト
+ *　"latest": "20160328", //  files/members/ 最新のフォルダ
+ *　"members" // MVP
+ *　
+ */
+__mvp = `{
+	"latest": "20160328",
+	"members": {
+		"DT0222": {
+			"CTR": "60",
+			"CVR": "40",
+			"banner": "me_and_tree.jpg"
+		},
+		"DT0220": {
+			"CTR": "40",
+			"CVR": "30",
+			"banner": "tree_root.jpg"
+		}
+	}
+}`;
