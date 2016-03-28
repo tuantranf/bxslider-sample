@@ -58,7 +58,7 @@ $(function() {
     }
   };
 
-  var opt_name = 'video';
+  var opt_name = 'video'; // only work with it
   var slider = $('#slider').bxSlider();
   updateSlider(0, opt_name);
 
@@ -67,7 +67,7 @@ $(function() {
     if (curSlide[0].id == "end") location.reload(true);
 
     // video
-    if (curSlide.hasClass("video")) {
+    if (curSlide.hasClass("video")) { // never come here
       if (opt_name != "video") {
         console.log("change to video setting");
         opt_name = "video";
@@ -75,6 +75,7 @@ $(function() {
         return;
       }
 
+      // can not play video in onSlideAfterHandler
       slider.stopAuto();
       curSlide.children('video')[0].play();
     }
@@ -118,7 +119,7 @@ $(function() {
       useCSS: false,
       easing: easing,
       pager: false,
-      infiniteLoop: true,
+      infiniteLoop: false,
       adaptiveHeight: true,
       startSlide: startSlide,
       onSlideAfter: onSlideAfterHandler
